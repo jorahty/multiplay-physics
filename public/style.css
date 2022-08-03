@@ -1,3 +1,24 @@
+/* lock screen in place */
+html,
+body { height: 100%; margin: 0; }
+body {
+    -webkit-text-size-adjust: 100%;
+    overflow: hidden;
+    touch-action: none;
+}
+
+/* prevent selections */
+html {
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-text-size-adjust: none;
+}
+
 body {
   background: #27c;
   margin: 0;
