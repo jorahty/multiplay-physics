@@ -1,0 +1,14 @@
+{
+  "name": "sandbox",
+  "dependencies": {
+    "express": "*",
+    "socket.io": "*",
+    "matter-js": "*"
+  },
+  "devDependencies": {
+    "nodemon": "*"
+  },
+  "scripts": {
+    "start": "nodemon src/server.js"
+  }
+}

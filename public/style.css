@@ -1,0 +1,21 @@
+body {
+  background: #27c;
+  margin: 0;
+  max-width: 800px;
+  margin: auto;
+}
+
+canvas {
+  width: 100%;
+  /* image-rendering: pixelated; */
+  box-sizing: border-box;
+}
+
+button {
+  font-family: system-ui;
+  background: #0af;
+  border: none;
+  width: 50%;
+  height: 200px;
+  cursor: pointer;
+}
