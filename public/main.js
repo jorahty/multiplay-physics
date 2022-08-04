@@ -24,16 +24,19 @@ function animate() {
   if (!gamestate) return;
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "#bbb";
+  ctx.lineWidth = 4;
 
   let ball = true;
   for (const body of gamestate) {
-    let {x, y, r} = body;
+    let { x, y, r } = body;
     x /= shrink;
     y /= shrink;
     if (ball) {
       ctx.beginPath();
       ctx.arc(x, y, 50 / shrink, 0, 2 * Math.PI);
       ctx.fill();
+      ctx.stroke();
       ball = false;
       continue;
     }
@@ -45,13 +48,15 @@ function animate() {
     ctx.save();
     ctx.translate(x, y);
     ctx.rotate(r);
-    ctx.translate(-w/2, -h/1.5);
+    ctx.translate(-w / 2, -h / 1.5);
     ctx.drawImage(img, 0, 0, w, h);
     ctx.restore();
   }
 }
 
 animate();
+
+// controls
 
 const rotate = document.createElement('button');
 const translate = document.createElement('button');
@@ -71,3 +76,20 @@ function input(e, down) {
   if (!down) code = code.toUpperCase();
   socket.volatile.emit('input', code);
 }
+
+// ping
+
+const ping = document.createElement('h1');
+document.body.appendChild(ping);
+
+setInterval(() => {
+  const start = Date.now();
+
+  socket.volatile.emit("ping", () => {
+    const duration = Date.now() - start;
+    const hue = Math.max(-2.6 * duration + 180, 0);
+    const color = `hsl(${hue} 100% 50%)`;
+    ping.style.color = color;
+    ping.textContent = `Ping: ${duration}`;
+  });
+}, 1000);

@@ -22,7 +22,7 @@ html {
 body {
   background: #27c;
   margin: 0;
-  max-width: 800px;
+  max-width: 1200px;
   margin: auto;
 }
 
@@ -35,8 +35,21 @@ canvas {
 button {
   font-family: system-ui;
   background: #0af;
+  color: #27c;
   border: none;
   width: 50%;
-  height: 200px;
+  height: 50vh;
+  font-size: 50pt;
   cursor: pointer;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+h1 {
+  font-family: system-ui;
+  margin: 0;
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
 }

@@ -19,10 +19,10 @@ engine.gravity.scale *= 0.5;
 
 // create walls
 Composite.add(engine.world, [
-  Bodies.rectangle(400, 0, 800, 50, { isStatic: true }),
-  Bodies.rectangle(400, 600, 800, 50, { isStatic: true }),
-  Bodies.rectangle(800, 300, 50, 600, { isStatic: true }),
-  Bodies.rectangle(0, 300, 50, 600, { isStatic: true })
+  Bodies.rectangle(400, 0 - 25, 800, 50, { isStatic: true }),
+  Bodies.rectangle(400, 600 + 25, 800, 50, { isStatic: true }),
+  Bodies.rectangle(800 + 25, 300, 50, 600, { isStatic: true }),
+  Bodies.rectangle(0 - 25, 300, 50, 600, { isStatic: true })
 ]);
 
 // create ball
@@ -72,6 +72,8 @@ io.on('connection', (socket) => {
     console.log(`User disconnected! Total: ${--playerCount}`);
     Composite.remove(engine.world, [body]);
   });
+
+  socket.on('ping', callback => callback());
 });
 
 // emit regular updates to all clients 
